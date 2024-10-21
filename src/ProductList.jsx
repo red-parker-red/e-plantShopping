@@ -92,7 +92,7 @@ function ProductList() {
             category: "Insect Repellent Plants",
             plants: [
                 {
-                    name: "oregano",
+                    name: "Oregano",
                     image: "https://cdn.pixabay.com/photo/2015/05/30/21/20/oregano-790702_1280.jpg",
                     description: "The oregano plants contains compounds that can deter certain insects.",
                     cost: "$10"
@@ -268,8 +268,20 @@ const handlePlantsClick = (e) => {
         </div>
         {!showCart? (
         <div className="product-grid">
-
-
+               {plantsArray.map((category, index) => (
+    <div key={index}>
+        <h1><div>{category.category}</div></h1>
+        <div className="product-list">
+            {category.plants.map((plant, plantIndex) => (
+            <div className="product-card" key={plantIndex}>
+                <img className="product-image" src={plant.image} alt={plant.name} />
+                <div className="product-title">{plant.name}</div>
+                <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+            </div>
+            ))}
+        </div>
+    </div>
+    ))} 
         </div>
  ) :  (
     <CartItem onContinueShopping={handleContinueShopping}/>
