@@ -4,8 +4,8 @@ import CartItem from "./CartItem";
 import { addItem, removeItem, updateQuantity } from './CartSlice';
 
 function ProductList() {
-  const [showCart, setShowCart] = useState(false); //hides the visitbility of the cart
-  const [showPlants, setShowPlants] = useState(false); // hides the visibility of the About Us page
+  const [showCart, setShowCart] = React.useState(false); //hides the visitbility of the cart
+  const [showPlants, setShowPlants] = React.useState(false); // hides the visibility of the About Us page
 
   const plantsArray = [
     {

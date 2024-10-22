@@ -4,7 +4,7 @@ import "./App.css";
 import AboutUs from "./AboutUs";
 
 function App() {
-  const [showProductList, setShowProductList] = useState(false);
+  const [showProductList, setShowProductList] = React.useState(false);
   //when app is loaded, hide product list
 
   const handleGetStartedClick = () => {
