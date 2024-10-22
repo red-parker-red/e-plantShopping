@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import handleAddedToCart from "./CartItem";
 
 export const CartSlice = createSlice({
   name: "cart",
@@ -24,12 +23,12 @@ export const CartSlice = createSlice({
       state.items = state.items.filter(
         (items) => items.name !== action.payload
       );
-      //filters the items to see if its already added
+      //filters the items to see if its already added & removes
     },
     updateQuantity: (state, action) => {
       const {name, quantity} = action.payload; //finds data in payload
-      const itemToUpdate = state.items.find(item => item.name === name); //finds name
-      if (itemToUpdate) {
+      const itemToUpdate = state.items.find(item => item.name === name); //finds name in array
+      if (itemToUpdate) { //if item is in the array
         itemToUpdate.quantity = quantity;
       }
     },
