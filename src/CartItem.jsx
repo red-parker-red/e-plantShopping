@@ -7,29 +7,17 @@ const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
-  // Calculate total amount for all products in the cart
   const calculateTotalAmount = (section) => {
-    let totalCost = 0;
-    if (section === "item"){
-      CartItem.plantsArray.forEach((item) => {
-        totalCost += item.cost * item.quantity;
-      })
-    }
-    return totalCost;
+    // let totalCost = 0;
+    // if (section === "item"){
+    //   CartItem.plantsArray.forEach((item) => {
+    //     totalCost += item.cost * item.quantity;
+    //   })
+    // }
+    // return totalCost;
   };
-  const plantTotalCost = calculateTotalAmount('item')
 
   const handleContinueShopping = (e) => {};
-
-  const [addedToCart, setAddedToCart] = useState({});
-
-  const handleAddToCart = (product) => { //when button pressed, plant is product
-    dispatch(addItem(product)); //sends plant to additem
-    setAddedToCart((prevState) => ({
-      ...prevState,
-      [product.name]: true, //name is the key, true is in the cart
-    }))
-  };
 
   const handleIncrement = (item) => {};
 
