@@ -7,41 +7,47 @@ const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
-  const calculateTotalAmount = () => {
-    // let totalCost = 0;
-    // if (section === "item"){
-    //   CartItem.plantsArray.forEach((item) => {
-    //     totalCost += item.cost * item.quantity;
-    //   })
-    // }
-    // return totalCost;
+  const calculateTotalAmount = (cart) => {
+    let cartTotal = 0;
+    for (let i=0; i<cart.length; i++){
+    cartTotal = cartTotal + (cart[i].quantity * cart[i].cost.slice(1))
+    } 
+    return cartTotal;
   };
 
-  const handleContinueShopping = (e) => {};
+  const handleCheckoutShopping = (e) => {
+    alert("Hello! I am an alert box!!");
+  };
+
+  const handleContinueShopping = (e) => {
+    onContinueShopping;
+  };
 
   const handleIncrement = (item) => {
-  //  item.quantity = item.quantity +1
-    // let test = item
-    // // test.quantity = item.quantity +1 
-    // console.log(test, item)
     dispatch(updateQuantity({name: item.name, quantity: item.quantity +1}));
-  };
-
-  const handleDecrement = (item) => {
-    dispatch(updateQuantity(item));
   };
 
   const handleRemove = (item) => {
     dispatch(removeItem(item));
   };
 
-  // Calculate total cost based on quantity for an item
-  const calculateTotalCost = (item) => {};
+  const handleDecrement = (item) => {
+    if(item.quantity < 2){ //if it aint broke, don't fix it
+      handleRemove(item);
+    } else {
+       dispatch(updateQuantity({name: item.name, quantity: item.quantity -1}));
+    }
+  };
+
+  const calculateTotalCost = (item) => {
+    let itemTotal = item.quantity * item.cost.slice(1);
+    return itemTotal;
+  };
 
   return (
     <div className="cart-container">
       <h2 style={{ color: "black" }}>
-        Total Cart Amount: ${calculateTotalAmount()}
+        Total Cart Amount: ${calculateTotalAmount(cart)}
       </h2>
       <div>
         {cart.map((item) => (
