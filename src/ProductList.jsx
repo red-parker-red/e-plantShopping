@@ -17,7 +17,6 @@ function ProductList() {
       ...prevState,
       [product.name]: true, //name is the key, true is in the cart
     }))
-    console.log(addedToCart);
   };
 
 
