@@ -9,9 +9,9 @@ const CartItem = ({ onContinueShopping }) => {
 
   const calculateTotalAmount = (cart) => {
     let cartTotal = 0;
-    for (let i=0; i<cart.length; i++){
-    cartTotal = cartTotal + (cart[i].quantity * cart[i].cost.slice(1))
-    } 
+    for (let i = 0; i < cart.length; i++) {
+      cartTotal = cartTotal + (cart[i].quantity * cart[i].cost.slice(1))
+    }
     return cartTotal;
   };
 
@@ -24,7 +24,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleIncrement = (item) => {
-    dispatch(updateQuantity({name: item.name, quantity: item.quantity +1}));
+    dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }));
   };
 
   const handleRemove = (item) => {
@@ -32,10 +32,10 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleDecrement = (item) => {
-    if(item.quantity < 2){ //if it aint broke, don't fix it
+    if (item.quantity < 2) {
       handleRemove(item);
     } else {
-       dispatch(updateQuantity({name: item.name, quantity: item.quantity -1}));
+      dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
     }
   };
 

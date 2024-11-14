@@ -5,10 +5,9 @@ import CartItem from "./CartItem";
 import { addItem, removeItem, updateQuantity } from './CartSlice';
 
 function ProductList() {
-  const [showCart, setShowCart] = React.useState(false); //hides the visitbility of the cart
+  const [showCart, setShowCart] = React.useState(false); //hides the visibility of the cart
   const [showPlants, setShowPlants] = React.useState(false); // hides the visibility of the About Us page
   const dispatch = useDispatch();
-
   const [addedToCart, setAddedToCart] = useState({});
 
   const handleAddToCart = (product) => { //when button pressed, retrieves the selected plant
@@ -355,7 +354,7 @@ function ProductList() {
         </div>
       </div>
 
-      {!showCart ? ( //start of a huge if statement. if !showcart is false then display plants
+      {!showCart ? ( //start of a huge if statement. if showcart is false then display plants
         <div className="product-grid">
           {plantsArray.map((category, index) => (
             // searches through array for the catagory and index
@@ -389,7 +388,7 @@ function ProductList() {
           ))}
         </div>
       ) : (
-        //if !showcart is true then continue shopping
+        //if showcart is true then continue shopping
         <CartItem onContinueShopping={handleContinueShopping} />
       )}
     </div>
